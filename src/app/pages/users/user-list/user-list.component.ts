@@ -40,7 +40,7 @@ export class UserListComponent implements OnInit {
 
   deletePlayer(player: Player){
     if (confirm(`Seguro de que Quieres Borrar a ${player.name}`)) {
-      
+      this._playerService.deletePlayer(player.id);
     }
   }
 }
