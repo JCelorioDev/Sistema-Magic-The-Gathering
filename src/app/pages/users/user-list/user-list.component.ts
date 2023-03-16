@@ -2,7 +2,7 @@ import { Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {PlayersService} from 'src/app/services/players.service';
 import { FormControl, ReactiveFormsModule} from '@angular/forms';
-import { Observable } from 'rxjs';
+import { debounceTime, Observable } from 'rxjs';
 import { Player } from 'src/app/commons/interface/player.interface';
 import { Router } from '@angular/router';
 
@@ -21,7 +21,11 @@ export class UserListComponent implements OnInit {
   ngOnInit(){
     // this._playerService.getPlayer().subscribe((res) => console.log(res)); 
     this.players$ = this._playerService.getPlayer();
-    this.searcher.valueChanges.subscribe( search=> {
+    this.searcher.valueChanges
+    .pipe(
+      debounceTime(1000)
+    )
+    .subscribe( search=> {
       if (search) {
         this.players$ = this._playerService.getPlayer(search);
       }else{

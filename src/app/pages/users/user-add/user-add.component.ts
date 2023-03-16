@@ -9,6 +9,7 @@ import {
 }from '@angular/forms';
 import { PlayersService } from 'src/app/services/players.service';
 import { Router } from '@angular/router';
+import { Player } from 'src/app/commons/interface/player.interface';
 @Component({
   selector: 'app-user-add',
   standalone: true,
@@ -27,5 +28,22 @@ export class UserAddComponent {
 
   get decks(){
     return (this.form.get('decks') as FormArray).controls;
+  }
+
+  createDeck(){
+    (this.form.get('decks') as FormArray).push(
+      new FormGroup({
+        name: new FormControl('', Validators.required),
+        cards: new FormControl(null,Validators.required),
+      })
+    );
+  }
+
+    addPlayer(){
+      this._playerService.addPlayer({
+        id: new Date().getTime().toString(),
+        ...this.form.getRawValue(),
+    } as Player);
+    this._router.navigate(['users']);
   }
 }

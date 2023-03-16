@@ -4,7 +4,7 @@
             Nombre del Jugador
         </label>
         <input type="text" id="name" class="form-control" formControlName="name" placeholder="Nombre del Jugador">
-        <button class="btn btn-primary mt-2">Agregar Deck</button>
+        <button class="btn btn-primary mt-2" (click)="createDeck()">Agregar Deck</button>
     </div>
     
 
@@ -13,7 +13,7 @@
     <form class="row g-3" [formGroupName]="i">
         <div class="col-auto">
             <label for="name">Nombre</label>
-            <input type="text" class="form-control" id="name" formControlName=" "name placeholder="Nombre del Deck">
+            <input type="text" class="form-control" id="name" formControlName= "name" placeholder="Nombre del Deck">
         </div>
         <div class="col-auto">
             <label for="cards">Cartas</label>
@@ -23,4 +23,4 @@
     </div>
 </form>
 
-<button class="btn btn-primary mt-2">Guardar</button>
+<button class="btn btn-primary mt-2" (click)="addPlayer()">Guardar</button>

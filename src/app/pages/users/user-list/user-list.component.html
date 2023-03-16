@@ -1,9 +1,6 @@
 <button class="btn btn-primary" (click)="_router.navigate(['users/add'])">Agregar Jugador</button>
 <input [formControl] = "searcher" type="text" class="form-control mt-2">
 <div class="players" *ngIf="players$ | async as players">
-    <pre>
-        <code>{{players | json}}</code>
-    </pre>
     <table class="table">
         <thead>
             <tr>
@@ -15,7 +12,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let player of players;  let i = index">
-                <th scope="row"></th>
+                <th scope="row">{{i+1}}</th>
                 <td>{{player.name}}</td>
                 <td>
                     <li *ngFor="let deck of player.decks">
