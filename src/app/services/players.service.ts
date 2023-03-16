@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Firestore,addDoc, query, where, collectionData} from '@angular/fire/firestore';
 import { Player } from '../commons/interface/player.interface';
 import { collection } from '@firebase/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class PlayersService {
       q = query(playerRef, where('name', '==', filter));
     }
 
-    return collectionData(q);
+    return collectionData(q) as unknown as Observable<Player[]>;
   }
 
 }

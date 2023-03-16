@@ -1,10 +1,25 @@
-<form>
+<form [formGroup] = "form">
     <div class="mb-3">
         <label for="name">
             Nombre del Jugador
         </label>
         <input type="text" id="name" class="form-control" formControlName="name" placeholder="Nombre del Jugador">
         <button class="btn btn-primary mt-2">Agregar Deck</button>
+    </div>
+    
+
+    <div class="decks" formArrayName="decks" *ngFor="let item of decks; let i = index">
+
+    <form class="row g-3" [formGroupName]="i">
+        <div class="col-auto">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" id="name" formControlName=" "name placeholder="Nombre del Deck">
+        </div>
+        <div class="col-auto">
+            <label for="cards">Cartas</label>
+            <input type="text" class="form-control" id="cards" formControlName="cards" placeholder="Cantidad de Cartas">
+        </div>
+    </form>
     </div>
 </form>
 
