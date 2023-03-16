@@ -35,7 +35,7 @@ export class UserListComponent implements OnInit {
   }
 
   editPlayer(player: Player){
-    this._router.navigateByUrl('users/edit');
+    this._router.navigateByUrl('users/edit', {state: {player}});
   }
 
   deletePlayer(player: Player){

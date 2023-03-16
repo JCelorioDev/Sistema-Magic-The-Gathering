@@ -1,5 +1,4 @@
-<p>user-edit works!</p>
-<form>
+<form [formGroup] = "form">
     <p>
         Editar Jugador
     </p>
@@ -8,8 +7,22 @@
             Nombre del Jugador
         </label>
         <input type="text" id="name" class="form-control" formControlName="name" placeholder="Nombre del Jugador">
-        <button class="btn btn-primary mt-2">Agregar Deck</button>
+        <button class="btn btn-primary mt-2" (click)="createDeck()">Agregar Deck</button>
+    </div>
+    
+
+    <div class="decks" formArrayName="decks" *ngFor="let item of decks; let i = index">
+        <for class="row g-3" [formGroupName] = "i">
+            <div class="col-auto">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" id="name" formControlName= "name" placeholder="Nombre del Deck">
+            </div>
+            <div class="col-auto">
+                <label for="cards">Cartas</label>
+                <input type="text" class="form-control" id="cards" formControlName="cards" placeholder="Cantidad de Cartas">
+            </div>
+        </for>
     </div>
 </form>
 
-<button class="btn btn-primary mt-2">Guardar</button>
+<button class="btn btn-primary mt-2" (click)="updatePlayer()">Guardar</button>
