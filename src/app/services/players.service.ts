@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Firestore,addDoc} from '@angular/fire/firestore';
+import {Firestore,addDoc, query, where, collectionData} from '@angular/fire/firestore';
 import { Player } from '../commons/interface/player.interface';
 import { collection } from '@firebase/firestore';
 
@@ -14,4 +14,15 @@ export class PlayersService {
     const palyerRef = collection(this.firestore, 'players');
     return addDoc(palyerRef, player);
   }
+
+  getPlayer(filter = ''){
+    const playerRef = collection(this.firestore, 'players');
+    let q = query(playerRef);
+    if (filter) {
+      q = query(playerRef, where('name', '==', filter));
+    }
+
+    return collectionData(q);
+  }
+
 }

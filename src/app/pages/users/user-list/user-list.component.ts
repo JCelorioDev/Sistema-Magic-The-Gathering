@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {PlayersService} from 'src/app/services/players.service';
 
 @Component({
   selector: 'app-user-list',
@@ -8,6 +9,10 @@ import { CommonModule } from '@angular/common';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit {
+  _playerService = inject(PlayersService);
 
+  ngOnInit(){
+    this._playerService.getPlayer().subscribe((res) => console.log(res)); 
+  }
 }
