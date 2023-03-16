@@ -1,0 +1,21 @@
+{
+  "targets": {
+    "crud-15-a2fc5": {
+      "hosting": {
+        "crud_angular2": [
+          "crud-15-a2fc5"
+        ]
+      }
+    },
+    "crud-practica-6003e": {
+      "hosting": {
+        "crud_angular2": [
+          "crud-practica-6003e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "crud-practica-6003e"
+  }
+}

@@ -97,6 +97,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "crud_angular2:build:production",
+            "firebaseProject": "crud-practica-6003e",
+            "firebaseHostingSite": "crud-practica-6003e"
+          }
         }
       }
     }
